@@ -20,6 +20,20 @@ int main ( void ) {
 		HANDLE_ERROR ( cudaGetDeviceProperties ( &prop, i ));
 		printf( "	--- General Information for device %d ---\n", i );
 		printf( "Name:	%s\n", prop.name );
-		printf( "Compute Capability: %d.%d" )
+		printf( "Compute Capability: %d.%d\n", prop.major, prop.minor );
+		printf( "Clock rate: %d\n", prop.clockRate );
+		printf( "Device copy overlap: " );
+		if (prop.deviceOverlap)
+			printf( "Enabled\n" );
+		else
+			printf( "Disabled\n" );
+		printf( "Kernel execition timeout : " );
+		if (prop.kernalExecTimeoutEnabled)
+			printf( "Enabled\n" );
+		else
+			printf( "Disabled\n" );
+
+		printf( "	--- Memory Information for device %d ---\n", i);
+		printf( " Total global mem: %ld" );
 	}
 }
